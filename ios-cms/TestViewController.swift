@@ -9,11 +9,14 @@
 import UIKit
 
 class TestViewController: UIViewController {
+  
+    var massive = ["Hello", "How are you?", "WOW!", "IT'S ALIVE!!!"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        testTableVC.delegate = self
+        testTableVC.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,26 +57,18 @@ class TestViewController: UIViewController {
 
 extension TestViewController: UITableViewDataSource, UITableViewDelegate{
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return massive.count
     }
     
-    func tableView(_ tableView: testTableVC/*UITableView*/, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OneCell") as! TestTableViewCell
+        let data = massive[indexPath.row]
+        cell.textL.text = data
+        return cell
     }
     
 }
-
-
-
-
-
-
-
 
 
 
