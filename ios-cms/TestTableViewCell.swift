@@ -10,7 +10,9 @@ import UIKit
 
 class TestTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
+  @IBOutlet weak var textL: UILabel!
+  
+  override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
